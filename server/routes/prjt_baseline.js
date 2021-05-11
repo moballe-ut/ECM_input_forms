@@ -5,4 +5,6 @@ router.get('/prjt_baseline', prjt_baselineController.getBaselineData);
 
 router.get('/prjt_baseline/:projectid', prjt_baselineController.getOneBaselineData);
 
+router.post('/prjt_baseline', prjt_baselineController.createBaselineData);
+
 module.exports = router;
