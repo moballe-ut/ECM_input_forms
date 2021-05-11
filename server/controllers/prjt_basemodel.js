@@ -2,7 +2,7 @@ const pool = require('../models/db');
 
 module.exports = {
     // Create Data
-    createBaseModelData: async(req, res) => {
+    createBasemodelData: async(req, res) => {
         const { projectid, basemodel_cddbasetemp, basemodel_hddbasetemp, basemodel_chw__deleted, basemodel_ele__deleted, basemodel_stm__deleted, basemodel_gas__deleted, basemodel_hhw__deleted, basemodel_cdd_rsq, basemodel_hdd_rsq, basemodel_cdd_cvrmse, basemodel_hdd_cvrmse} = req.body;
 
         try {
@@ -82,7 +82,7 @@ module.exports = {
     },
 
     //Delete data
-    deleteBaselineData: async(req, res) => {
+    deleteBasemodelData: async(req, res) => {
         const { projectid } = req.params;
 
         try {

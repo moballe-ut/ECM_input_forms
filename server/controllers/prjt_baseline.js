@@ -1,6 +1,7 @@
 const pool = require('../models/db');
 
 module.exports = {
+    //Create data
     createBaselineData: async(req, res) => {
         const { projectid, baseline_chw_tonhr, baseline_ele_kwh, baseline_stm_lb, baseline_gas_ccf, baseline_hhw_mmbtu, baseline_peakchw_ton, baseline_maintenancehours, baseline_wtr_kgal} = req.body;
 
@@ -18,7 +19,8 @@ module.exports = {
             return res.status(500).json(error);
         }
     },
-    
+
+    //Get all data
     getBaselineData: async(req, res) => {
         
         try {
@@ -35,6 +37,7 @@ module.exports = {
         }
     },
 
+    // Get a specific data point based on primary key
     getOneBaselineData: async (req, res) => {
 
         const { projectid } = req.params;
@@ -57,6 +60,7 @@ module.exports = {
 
     },
 
+    //Update data
     updateBaselineData: async(req , res) => {
         const { baseline_chw_tonhr, baseline_ele_kwh, baseline_stm_lb, baseline_gas_ccf, baseline_hhw_mmbtu, baseline_peakchw_ton, baseline_maintenancehours, baseline_wtr_kgal} = req.body;
         const { projectid } = req.params;
@@ -76,6 +80,7 @@ module.exports = {
         }  
     },
 
+    //Delete data
     deleteBaselineData: async(req, res) => {
         const { projectid } = req.params;
 
