@@ -78,13 +78,13 @@ module.exports = {
 
             const postModel = await pool.query(`UPDATE prjt_model_post SET postmodel_cddbasetemp = $1, postmodel_hddbasetemp = $2, postmodel_chw__deleted = $3, postmodel_ele__deleted = $4, 
             postmodel_stm__deleted = $5, postmodel_gas__deleted = $6, postmodel_hhw__deleted = $7, postmodel_cdd_rsq = $8, postmodel_hdd_rsq = $9, postmodel_cdd_cvrmse = $10, 
-           postmodel_hdd_cvrmse = $11, WHERE projectid = $12 `, [
+           postmodel_hdd_cvrmse = $11 WHERE projectid = $12 `, [
 
                 postmodel_cddbasetemp, postmodel_hddbasetemp, postmodel_chw__deleted, postmodel_ele__deleted, postmodel_gas__deleted, postmodel_hhw__deleted, 
                        postmodel_cdd_rsq, postmodel_cdd_cvrmse,postmodel_hdd_cvrmse, postmodel_hdd_rsq, postmodel_stm__deleted, projectid 
             ]);
 
-            return res.json(postModel, {message: "post model data has been updated"});
+            return res.json({message: "post model data has been updated"});
             
         } catch (error) {
             
@@ -103,7 +103,7 @@ module.exports = {
                 projectid
             ]);
 
-            return res.json(postModel, {message: "post model data has been deleted"});
+            return res.json({message: "post model data has been deleted"});
             
         } catch (error) {
 

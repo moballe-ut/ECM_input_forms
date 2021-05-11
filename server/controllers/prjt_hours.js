@@ -75,15 +75,15 @@ module.exports = {
 
         try {
 
-            const hours = await pool.query(`UPDATE prjt_hours SET hoursimp_emo = $1, hoursimp_analysts = $2, hoursimp_maintenance = $3, hoursimp_ets = $4,hoursimp_bot = $5, 
-            hoursimp_otherut = $6, hoursann_emo = $7, hoursann_analysts = $8, hoursann_maintenance, = $9, 
+            const hours = await pool.query(`UPDATE prjt_hours SET hoursimp_emo = $1, hoursimp_analysts = $2, hoursimp_maintenance = $3, hoursimp_ets = $4, hoursimp_bot = $5, 
+            hoursimp_otherut = $6, hoursann_emo = $7, hoursann_analysts = $8, hoursann_maintenance = $9, 
             hoursann_ets = $10, hoursann_bot = $11, hoursann_otherut = $12 WHERE projectid = $13`, [
 
              hoursimp_emo, hoursimp_analysts, hoursimp_maintenance, hoursimp_ets, 
             hoursimp_bot, hoursimp_otherut, hoursann_emo, hoursann_analysts, hoursann_maintenance, hoursann_ets, hoursann_bot, hoursann_otherut, projectid 
             ]);
 
-            return res.json(hours, {message: "hours data has been updated"});
+            return res.json({message: "hours data has been updated"});
             
         } catch (error) {
             
@@ -102,7 +102,7 @@ module.exports = {
                 projectid
             ]);
 
-            return res.json(hours, {message: "costs data data has been deleted"});
+            return res.json({message: "costs data data has been deleted"});
             
         } catch (error) {
 
