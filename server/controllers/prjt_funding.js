@@ -26,7 +26,7 @@ module.exports = {
     },
 
      //Get all data
-     getCostsData: async (req, res) => {
+     getFundingData: async (req, res) => {
 
         try {
 
@@ -44,7 +44,7 @@ module.exports = {
 
 
     // Get a specific data point based on primary key
-    getOneCostsData: async (req, res) => {
+    getOneFundingData: async (req, res) => {
 
         const { projectid } = req.params;
 
@@ -67,7 +67,7 @@ module.exports = {
     },
 
      //Update data
-     updateCostsData: async(req , res) => {
+     updateFundingData: async(req , res) => {
         const { fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
             fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total } = req.body;
         const { projectid } = req.params;
@@ -91,7 +91,7 @@ module.exports = {
     },
 
     //Delete data
-    deleteCostsData: async(req, res) => {
+    deleteFundingData: async(req, res) => {
         const { projectid } = req.params;
 
         try {
