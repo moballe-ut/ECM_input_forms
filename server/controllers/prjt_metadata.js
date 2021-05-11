@@ -30,7 +30,7 @@ module.exports = {
     },
 
     //Get all data
-    getMetadData: async (req, res) => {
+    getMetaData: async (req, res) => {
 
         try {
 
