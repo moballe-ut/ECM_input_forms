@@ -72,8 +72,9 @@ module.exports = {
 
         try {
 
-            const basemodel = await pool.query(`UPDATE prjt_model_base SET basemodel_cddbasetemp = $1, basemodel_hddbasetemp = $2, basemodel_chw__deleted = $3, basemodel_ele__deleted = $4, basemodel_stm__deleted = $5, 
-            basemodel_gas__deleted = $6, basemodel_hhw__deleted = $7, basemodel_cdd_rsq = $8, basemodel_hdd_rsq = $9, basemodel_cdd_cvrmse = $10, basemodel_hdd_cvrmse = $11  WHERE projectid = $12`, [
+            const basemodel = await pool.query(`UPDATE prjt_model_base SET basemodel_cddbasetemp = $1, basemodel_hddbasetemp = $2, basemodel_chw__deleted = $3, 
+            basemodel_ele__deleted = $4, basemodel_stm__deleted = $5, basemodel_gas__deleted = $6, basemodel_hhw__deleted = $7, basemodel_cdd_rsq = $8, 
+            basemodel_hdd_rsq = $9, basemodel_cdd_cvrmse = $10, basemodel_hdd_cvrmse = $11  WHERE projectid = $12`, [
 
                 basemodel_cddbasetemp, basemodel_hddbasetemp, basemodel_chw__deleted, basemodel_ele__deleted, basemodel_stm__deleted, basemodel_gas__deleted, 
                 basemodel_hhw__deleted, basemodel_cdd_rsq, basemodel_hdd_rsq, basemodel_cdd_cvrmse, basemodel_hdd_cvrmse, projectid 
