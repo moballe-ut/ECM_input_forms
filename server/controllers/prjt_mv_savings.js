@@ -99,7 +99,7 @@ module.exports = {
 
         try {
 
-            const mvSavingsdata = await pool.query("DELETE FROM prjt_mvSavingsdata WHERE projectid = $1", [
+            const mvSavingsdata = await pool.query("DELETE FROM prjt_mv_savings WHERE projectid = $1", [
                 projectid
             ]);
 
