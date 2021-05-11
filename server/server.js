@@ -13,7 +13,8 @@ app.use('/api', require('./routes/prjt_basemodel'));
 app.use('/api', require('./routes/prjt_costs'));
 app.use('/api', require('./routes/prjt_funding'));
 app.use('/api', require('./routes/prjt_hours'));
-app.use('/api', require('./routes/prjt_metadata'))
+app.use('/api', require('./routes/prjt_metadata'));
+app.use('/api', require('./routes/prjt_mv_savings'));
 
 app.listen(port, () => {
     console.log(`server listening on ${port}`);

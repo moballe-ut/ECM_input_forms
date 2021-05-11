@@ -9,8 +9,8 @@ module.exports = {
 
             try {
 
-                const mvSavingsdata = await pool.query(`INSERT INTO prjt_mvSavingsdata (projectid, mvsavings_chw_tonhr, mvsavings_ele_kwh, mvsavings_stm_lb, mvsavings_gas_ccf, mvsavings_hhw_mmbtu, mvsavings_peakchw_ton, 
-                    mvsavings_maintenancehours, mvsavings_wtr_kgal, mvsavings_misc_$uem, mvsavings_misc_$ut, mvsavings_misc_$aux) 
+                const mvSavingsdata = await pool.query(`INSERT INTO prjt_mv_savings (projectid, mvsavings_chw_tonhr, mvsavings_ele_kwh, mvsavings_stm_lb, mvsavings_gas_ccf, 
+                    mvsavings_hhw_mmbtu, mvsavings_peakchw_ton, mvsavings_maintenancehours, mvsavings_wtr_kgal, mvsavings_misc_$uem, mvsavings_misc_$ut, mvsavings_misc_$aux) 
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`, [
                         projectid, mvsavings_chw_tonhr, mvsavings_ele_kwh, mvsavings_stm_lb, mvsavings_gas_ccf, mvsavings_hhw_mmbtu, mvsavings_peakchw_ton, 
                         mvsavings_maintenancehours, mvsavings_wtr_kgal, mvsavings_misc_$uem, mvsavings_misc_$ut, mvsavings_misc_$aux
@@ -31,7 +31,7 @@ module.exports = {
 
         try {
 
-            const mvSavingsdata = await pool.query("SELECT * FROM prjt_mvSavingsdata");
+            const mvSavingsdata = await pool.query("SELECT * FROM prjt_mv_savings");
 
             return res.json(mvSavingsdata.rows);
             
@@ -51,7 +51,7 @@ module.exports = {
 
         try {
             
-            const mvSavingsdata = await pool.query("SELECT * FROM prjt_cost WHERE projectid = $1", [
+            const mvSavingsdata = await pool.query("SELECT * FROM prjt_mv_savings WHERE projectid = $1", [
                 projectid
             ]);
 
@@ -76,9 +76,9 @@ module.exports = {
 
         try {
 
-            const mvSavingsdata = await pool.query(`UPDATE prjt_mvSavingsdata SET mvsavings_chw_tonhr = $1, mvsavings_ele_kwh = $2, mvsavings_stm_lb = $3, mvsavings_gas_ccf = $4, mvsavings_hhw_mmbtu = $5, 
-            mvsavings_peakchw_ton = $6, mvsavings_maintenancehours = $7, mvsavings_wtr_kgal = $8, mvsavings_misc_$uem = $9, mvsavings_misc_$ut = $10, mvsavings_misc_$aux = $11, 
-            length_reporting_period_days = $12, WHERE projectid = $13 `, [
+            const mvSavingsdata = await pool.query(`UPDATE prjt_mv_savings SET mvsavings_chw_tonhr = $1, mvsavings_ele_kwh = $2, mvsavings_stm_lb = $3, mvsavings_gas_ccf = $4, 
+            mvsavings_hhw_mmbtu = $5, mvsavings_peakchw_ton = $6, mvsavings_maintenancehours = $7, mvsavings_wtr_kgal = $8, 
+            mvsavings_misc_$uem = $9, mvsavings_misc_$ut = $10, mvsavings_misc_$aux = $11, WHERE projectid = $12 `, [
 
                 mvsavings_chw_tonhr, mvsavings_ele_kwh, mvsavings_stm_lb, mvsavings_gas_ccf, mvsavings_hhw_mmbtu, mvsavings_peakchw_ton, 
                         mvsavings_maintenancehours, mvsavings_wtr_kgal, mvsavings_misc_$uem, mvsavings_misc_$ut, mvsavings_misc_$aux, projectid 
