@@ -4,7 +4,7 @@ const prjt_postmodelController = require('../controllers/prjt_postmodel');
 
 router.get('/prjt_model_post', prjt_postmodelController.getPostmodelData);
 
-router.get('/prjt_model_post/:projectid', prjt_postmodelController.getPostmodelData);
+router.get('/prjt_model_post/:projectid', prjt_postmodelController.getOnePostmodelData);
 
 router.post('/prjt_model_post', prjt_postmodelController.createPostmodelData);
 

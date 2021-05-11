@@ -19,7 +19,7 @@ module.exports = {
                         costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total
                     ]);
                     
-                    return res.json(costs)
+                    return res.json(costs);
 
             } catch (error) {
 
@@ -54,7 +54,7 @@ module.exports = {
 
         try {
             
-            const costs = await pool.query("SELECT * FROM prjt_cost WHERE projectid = $1", [
+            const costs = await pool.query("SELECT * FROM prjt_costs WHERE projectid = $1", [
                 projectid
             ]);
 

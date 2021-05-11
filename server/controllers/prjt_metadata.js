@@ -54,7 +54,7 @@ module.exports = {
 
         try {
             
-            const metadata = await pool.query("SELECT * FROM prjt_cost WHERE projectid = $1", [
+            const metadata = await pool.query("SELECT * FROM prjt_metadata WHERE projectid = $1", [
                 projectid
             ]);
 
