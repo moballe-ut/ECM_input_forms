@@ -6,7 +6,7 @@ module.exports = {
     createMetaData: async (req, res, next) => {
         const { projectid, building, measure_type, status, staff_lead, staff_colead, analyst, 
             project_description, nonenergy_benefits, baseline_start_date, reporting_period_start_date, length_baseline_period_days, 
-            length_reporting_period_days,  } = req.body;
+            length_reporting_period_days } = req.body;
 
             try {
 
