@@ -89,6 +89,12 @@ const Prjt_Metadata_Form = (props) => {
                             </div>
                             <textarea rows='5' value={props.projectDescription} onChange={e => props.setProjectDescription(e.target.value)} className="form-control" aria-label="With textarea"></textarea>
                         </div>
+                        <div className="input-group mt-5">
+                            <div className="input-group-prepend">
+                                <span className="input-group-text">Non Energy Benefits</span>
+                            </div>
+                            <textarea rows='2' value={props.nonEnergyBenefits} onChange={e => props.setNonEnergyBenefits(e.target.value)} className="form-control" aria-label="With textarea"></textarea>
+                        </div>
                     </form>
                 </div>
             </div>

@@ -4,37 +4,47 @@ import MetadataForm from './Metadata_form/Prjt_Metadata_Form'
 
 const Prjt_Metadata = () => {
 
-    const [projectid, setProjectId] = useState ('');
-    const [building, setBuilding] = useState ('');
-    const [measureType, setMeasureType] = useState ('');
-    const [status, setStatus] = useState ('');
-    const [staffLead, setStaffLead] = useState ('');
-    const [staffColead, setStaffColead] = useState ('');
-    const [analyst, setAnalyst] = useState ('');
-    const [projectDescription, setProjectDescription] = useState ('');
-    const [nonEnergyBenefits, setNonEnergyBenefits] = useState ('');
-    const [baselineStart, setBaselineStart] = useState ('');
-    const [reportingStart, setReportingStart] = useState ('');
-    const [numBaselineDays, setnumBaselineDays] = useState ('');
-    const [numReportingDays, setNumReportingDays] = useState ('');
+    const [inputs, setInputs] = useState ({
+        projectid: '',
+        building: '',
+        measure_type: '',
+        status: '',
+        staff_lead: '',
+        staff_colead: '',
+        analyst: '',
+        project_description: '',
+        nonenergy_benefits: '',
+        baseline_start_date: '',
+        reporting_period_start_date: '',
+        length_baseline_period_days: '',
+        length_reporting_period_days: ''
+
+    });
+
+    const { projectid, building, measureType, status, staffLead, staffColead, analyst, projectDescription, 
+        nonEnergyBenefits, baselineStart,  reportingStart, numBaselineDays, numReportingDays } = inputs
+
+
+    const onChange = e => {
+        setInputs({...inputs, [e.target.name] : e.target.value})
+    }
 
     const onSubmit = async e => {
         e.preventDefault();
 
-        try {
-            
-            const body = { projectid, building, measureType, status, staffLead, staffColead, analyst, projectDescription, 
-                nonEnergyBenefits, baselineStart,  reportingStart, numBaselineDays, numReportingDays }
+        const body = { projectid, building, measureType, status, staffLead, staffColead, analyst, projectDescription, 
+            nonEnergyBenefits, baselineStart,  reportingStart, numBaselineDays, numReportingDays }
 
+        try {
+        
                 const response = await fetch('http://localhost:5000/api/prjt_metada', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(body)
                 });
 
-                console.log(response)
-
-                window.location='/'
+                const parseRes = await response.json()
+                console.log(parseRes)
 
         } catch (error) {
             console.error(error.message);   
@@ -45,32 +55,7 @@ const Prjt_Metadata = () => {
         <div>
             <MetadataForm
             onSubmit={onSubmit}
-            projectid={projectid}
-            building={building} 
-            measureType={measureType} 
-            status={status} 
-            staffLead={staffLead} 
-            staffColead={staffColead} 
-            analyst={analyst} 
-            projectDescription={projectDescription} 
-            nonEnergyBenefits={nonEnergyBenefits} 
-            baselineStart={baselineStart}  
-            reportingStart={reportingStart} 
-            numBaselineDays={numBaselineDays} 
-            numReportingDays={numReportingDays}
-            setProjectId={setProjectId}
-            setBuilding={setBuilding}
-            setMeasureType={setMeasureType}
-            setStatus={setStatus}
-            setStaffLead={setStaffLead}
-            setStaffColead={setStaffColead}
-            setAnalyst={setAnalyst}
-            setProjectDescription={setProjectDescription}
-            setNonEnergyBenefits={setNonEnergyBenefits}
-            setBaselineStart={setBaselineStart}
-            setnumBaselineDays={setnumBaselineDays}
-            setNumReportingDays={setNumReportingDays}
-            setReportingStart={setReportingStart}
+            change={onChange}
             />
         </div>
     )
