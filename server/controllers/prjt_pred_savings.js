@@ -10,7 +10,7 @@ module.exports = {
             try {
 
                 const predSavings = await pool.query(`INSERT INTO prjt_pred_savings (projectid, predsavings_chw_tonhr, predsavings_ele_kwh, predsavings_stm_lb, predsavings_gas_ccf, 
-                    predsavings_hhw_mmbtu, predsavings_peakchw_ton, predsavings_maintenancehours,predsavings_wtr_kgal, predsavings_misc_$uem, predsavings_misc_$ut,predsavings_misc_$aux) 
+                    predsavings_hhw_mmbtu, predsavings_peakchw_ton, predsavings_maintenancehours,predsavings_wtr_kgal, predsavings_misc_$uem, predsavings_misc_$ut, predsavings_misc_$aux) 
                     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)`, [
                         projectid, predsavings_chw_tonhr, predsavings_ele_kwh, predsavings_stm_lb, predsavings_gas_ccf, predsavings_hhw_mmbtu, predsavings_peakchw_ton, 
                         predsavings_maintenancehours, predsavings_wtr_kgal, predsavings_misc_$uem, predsavings_misc_$ut,predsavings_misc_$aux

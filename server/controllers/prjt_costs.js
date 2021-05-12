@@ -6,17 +6,17 @@ module.exports = {
     createCostsData: async (req, res, next) => {
         const { projectid, costimp_emo, costimp_analysts, costimp_maintenance, costimp_ets, costimp_bot, costimp_otherut, 
             costimp_materials, costimp_nonutcontract, costimp_contingency, costann_emo, costann_analysts, costann_maintenance, costann_ets, 
-            costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total } = req.body;
+            costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency } = req.body;
 
             try {
 
                 const costs = await pool.query(`INSERT INTO prjt_costs (projectid, costimp_emo, costimp_analysts, costimp_maintenance, costimp_ets, costimp_bot, costimp_otherut, 
                     costimp_materials, costimp_nonutcontract, costimp_contingency, costann_emo, costann_analysts, costann_maintenance, 
-                    costann_ets, costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total) 
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19, $20, $21)`, [
+                    costann_ets, costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency) 
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17, $18, $19)`, [
                         projectid, costimp_emo, costimp_analysts, costimp_maintenance, costimp_ets, costimp_bot, costimp_otherut, 
                         costimp_materials, costimp_nonutcontract, costimp_contingency, costann_emo, costann_analysts, costann_maintenance, costann_ets, 
-                        costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total
+                        costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency
                     ]);
                     
                     return res.json(costs);
@@ -74,19 +74,18 @@ module.exports = {
      updateCostsData: async(req , res) => {
         const { costimp_emo, costimp_analysts, costimp_maintenance, costimp_ets, costimp_bot, costimp_otherut, 
             costimp_materials, costimp_nonutcontract, costimp_contingency, costann_emo, costann_analysts, costann_maintenance, costann_ets, 
-            costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total } = req.body;
+            costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency } = req.body;
         const { projectid } = req.params;
 
         try {
 
             const costs = await pool.query(`UPDATE prjt_costs SET costimp_emo = $1, costimp_analysts = $2, costimp_maintenance = $3, costimp_ets = $4, costimp_bot = $5, 
             costimp_otherut = $6, costimp_materials = $7, costimp_nonutcontract = $8, costimp_contingency = $9, costann_emo = $10, costann_analysts = $11, costann_maintenance = $12, 
-            costann_ets = $13, costann_bot = $14, costann_otherut = $15, costann_materials = $16, costann_nonutcontract = $17, costann_contingency = $18, costimp_total = $19, costann_total = $10
-            WHERE projectid = $21`, [
+            costann_ets = $13, costann_bot = $14, costann_otherut = $15, costann_materials = $16, costann_nonutcontract = $17, costann_contingency = $18 WHERE projectid = $19`, [
 
                 costimp_emo, costimp_analysts, costimp_maintenance, costimp_ets, costimp_bot, costimp_otherut, 
                         costimp_materials, costimp_nonutcontract, costimp_contingency, costann_emo, costann_analysts, costann_maintenance, costann_ets, 
-                        costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, costimp_total, costann_total, projectid 
+                        costann_bot, costann_otherut, costann_materials, costann_nonutcontract, costann_contingency, projectid 
             ]);
 
             return res.json({message: "costs data has been updated"});

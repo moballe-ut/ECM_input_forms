@@ -5,15 +5,15 @@ module.exports = {
     //Create Data
     createFundingData: async(req, res) => {
         const { projectid, fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
-            fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total } = req.body;
+            fundimp_aux, fundann_facilities, fundann_uem, fundann_aux } = req.body;
 
             try {
 
                 const funding = await pool.query(`INSERT INTO prjt_funding ( projectid, fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
-                    fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total) 
-                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)`, [
+                    fundimp_aux, fundann_facilities, fundann_uem, fundann_aux) 
+                    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)`, [
                         projectid, fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
-                        fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total
+                        fundimp_aux, fundann_facilities, fundann_uem, fundann_aux
                     ]);
 
                     return res.json(funding);
@@ -70,19 +70,19 @@ module.exports = {
      //Update data
      updateFundingData: async(req , res) => {
         const { fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
-            fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total } = req.body;
+            fundimp_aux, fundann_facilities, fundann_uem, fundann_aux } = req.body;
         const { projectid } = req.params;
 
         try {
 
             const funding = await pool.query(`UPDATE prjt_funding SET fundimp_greenfund = $1, fundimp_facilities = $2, fundimp_repairreplacement = $3, fundimp_uem = $4, fundimp_aux = $5, 
-            fundann_facilities = $6, fundann_uem = $7, fundann_aux = $8, fundimp_total = $9, fundann_total = $10, WHERE projectid = $11`, [
+            fundann_facilities = $6, fundann_uem = $7, fundann_aux = $8 WHERE projectid = $9`, [
 
              fundimp_greenfund, fundimp_facilities, fundimp_repairreplacement, fundimp_uem, 
-             fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, fundimp_total, fundann_total, projectid 
+             fundimp_aux, fundann_facilities, fundann_uem, fundann_aux, projectid 
             ]);
 
-            return res.json(funding, {message: "funding data has been updated"});
+            return res.json({message: "funding data has been updated"});
             
         } catch (error) {
             
@@ -101,7 +101,7 @@ module.exports = {
                 projectid
             ]);
 
-            return res.json(funding, {message: "costs data data has been deleted"});
+            return res.json({message: "costs data data has been deleted"});
             
         } catch (error) {
 
