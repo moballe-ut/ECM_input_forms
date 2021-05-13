@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
 import SelectInput from "../SelectInput"
+import { buildingChoices } from "../Data/BuildingChoices"
+import { measureTypes } from "../Data/MeasureTypes"
 
 const Prjt_Metadata_Form = () => {
 
     const [inputs, setInputs] = useState({
         project_id: '',
         building: 'Choose...',
-        measure_type: '',
+        measure_type: 'Choose...',
         status: '',
         staff_lead: '',
         staff_colead: '',
@@ -67,24 +69,19 @@ const Prjt_Metadata_Form = () => {
                                     <input type="text" name="project_id" className="form-control" value={project_id} onChange={onChange} />
                                 </div>
                                 <SelectInput
+                                dataArray={buildingChoices}
                                 onChange={onChange}
                                 value={building}
                                 name="building"
                                 dataName="Building"
                                 />
-                                {/* <div className="input-group mb-3">
-                                    <label className="input-group-text" for="inputGroupSelect01">Building</label>
-                                    <select onChange={onChange} value={building} name="building" className="form-select" id="inputGroupSelect01">
-                                        <option>Hi</option>
-                                        <option>Hello</option>
-                                    </select>
-                                </div> */}
-                                <div className="input-group mb-3">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">Measure Type</span>
-                                    </div>
-                                    <input type="text" name="measure_type" className="form-control" value={measure_type} onChange={onChange} />
-                                </div>
+                               <SelectInput
+                                dataArray={measureTypes}
+                                onChange={onChange}
+                                value={measure_type}
+                                name="measure_type"
+                                dataName="Measure Type"
+                                />
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Status</span>

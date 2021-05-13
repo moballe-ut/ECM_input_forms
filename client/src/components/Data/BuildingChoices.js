@@ -1,10 +1,5 @@
-import React from 'react'
-
-import SelectInput from './SelectInput'
-
-const BuildingChoices = () => {
-
-    const buildingArray = [
+    export const buildingChoices = 
+      [
         {
             id: 1,
             name: "ACB",
@@ -891,9 +886,5 @@ const BuildingChoices = () => {
         } 
     ]
 
-    return (
-        <SelectInput arrayData={buildingArray} />
-    )
-}
 
-export default BuildingChoices
+
