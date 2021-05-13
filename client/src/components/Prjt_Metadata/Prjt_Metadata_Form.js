@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
+import SelectInput from "../SelectInput"
 
 const Prjt_Metadata_Form = () => {
 
     const [inputs, setInputs] = useState({
         project_id: '',
-        building: '',
+        building: 'Choose...',
         measure_type: '',
         status: '',
         staff_lead: '',
@@ -65,12 +66,19 @@ const Prjt_Metadata_Form = () => {
                                     </div>
                                     <input type="text" name="project_id" className="form-control" value={project_id} onChange={onChange} />
                                 </div>
-                                <div className="input-group mb-3">
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text" id="inputGroup-sizing-default">Building</span>
-                                    </div>
-                                    <input type="text" name="building" className="form-control" value={building} onChange={onChange} />
-                                </div>
+                                <SelectInput
+                                onChange={onChange}
+                                value={building}
+                                name="building"
+                                dataName="Building"
+                                />
+                                {/* <div className="input-group mb-3">
+                                    <label className="input-group-text" for="inputGroupSelect01">Building</label>
+                                    <select onChange={onChange} value={building} name="building" className="form-select" id="inputGroupSelect01">
+                                        <option>Hi</option>
+                                        <option>Hello</option>
+                                    </select>
+                                </div> */}
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
                                         <span className="input-group-text" id="inputGroup-sizing-default">Measure Type</span>
