@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const cors = require('cors')
 require('dotenv').config();
+const pool = require('./models/db')
 
 const port = process.env.PORT || 5001
 
@@ -18,6 +19,14 @@ app.use('/api', require('./routes/prjt_mv_savings'));
 app.use('/api', require('./routes/prjt_postmodel'));
 app.use('/api', require('./routes/prjt_pred_savings'));
 
+app.get("/prjts", async (req, res) => {
+    try {
+        const prjts = await pool.query("SELECT * FROM prjts")
+        return res.json(prjts.rows)
+    } catch (error) {
+        console.error(error.message )
+    }
+})
 app.listen(port, () => {
     console.log(`server listening on ${port}`);
 });
