@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import SelectInput from "../Inputs/SelectInput"
 import TextInput from "../Inputs/TextInput"
+import Button from "../Button/Button"
 import { buildingChoices } from "../Inputs/Data/BuildingChoices"
 import { measureTypes } from "../Inputs/Data/MeasureTypes"
 import { statusData } from "../Inputs/Data/Status"
@@ -62,7 +63,6 @@ const Prjt_Metadata_Form = () => {
     }
     return (
         <>
-        <button type="button" className="btn btn-primary mb-3">Find Projects</button>
         <form onSubmit={onSubmit}>
             <div className="row">
                 <div className="col-md-4">
@@ -162,9 +162,13 @@ const Prjt_Metadata_Form = () => {
                 <div className="input-group-prepend">
                     <span className="input-group-text">Non Energy Benefits</span>
                 </div>
-                <textarea rows='2' name="nonenergy_benefits" value={non_energy_benefits} onChange={onChange} className="form-control" aria-label="With textarea"></textarea>
+                <textarea rows='2' name="nonenergy_benefits" value={non_energy_benefits} onChange={onChange} className="form-control mb-4" aria-label="With textarea"></textarea>
             </div>
-            <button type="submit" className="btn btn-success mt-3">Submit</button>
+            <Button 
+            action="Submit" 
+            type="submit"
+            color="btn-success"
+            />
         </form>
         </>
     )
